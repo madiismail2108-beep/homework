@@ -1,0 +1,199 @@
+-------------------hw
+create schema if not exists dep;
+
+set search_path to dep;
+
+SHOW timezone;
+
+create table department (
+    id serial primary key,
+    name varchar(100) not null unique,
+    location varchar(100)
+);
+
+create table employee (
+    id serial primary key,
+    fullname varchar(150) not null,
+    specialization varchar(100),
+    salary numeric(10,2),
+    department_id int,
+    hire_date date default current_date,
+    constraint fk_department
+        foreign key (department_id)
+        references department(id)
+        on delete set null
+);
+
+INSERT INTO department(name, location)
+VALUES
+    ('IT', 'Tashkent'),
+    ('HR', 'Samarkand'),
+    ('Finance', 'Bukhara'),
+    ('Marketing', 'Namangan');
+
+INSERT INTO employee (fullname, specialization, salary, department_id, hire_date)
+VALUES
+    ('Ali Valiyev', 'Developer', 850.00, 1, '2024-01-15'),
+    ('Dilnoza Rustamova', 'HR Specialist', 600.00, 2, '2024-02-10'),
+    ('Jasur Qodirov', 'Accountant', 720.00, 3, '2024-03-05'),
+    ('Malika Karimova', 'Marketing Manager', 950.00, 4, '2024-03-18'),
+    ('Bekzod Rakhimov', 'Analyst', 780.00, 1, '2024-04-02'),
+    ('Gulbahor Ismailova', 'Recruiter', 610.00, 2, '2024-04-12'),
+    ('Shavkat Mamatov', 'Financial Analyst', 880.00, 3, '2024-05-01'),
+    ('Nilufar Usmonova', 'Marketing Specialist', 700.00, 4, '2024-05-20'),
+    ('Azizbek Ergashev', 'Software Engineer', 900.00, 1, '2024-06-03'),
+    ('Zarnigor Akhmedova', 'HR Manager', 670.00, 2, '2024-06-25'),
+    ('Rustam Khudoyberdiyev', 'Auditor', 760.00, 3, '2024-07-14'),
+    ('Madina Ibragimova', 'PR Specialist', 730.00, 4, '2024-07-28'),
+    ('Oybek Sobirov', 'Backend Developer', 870.00, 1, '2024-08-09'),
+    ('Sevara Jalilova', 'HR Assistant', 590.00, 2, '2024-08-22'),
+    ('Akmal Tursunov', 'Finance Manager', 940.00, 3, '2024-09-10'),
+	 ('Gulbahor Toshpulatov', 'HR Manager', 832.79, 3, '2024-01-18'),
+    ('Adham Yusupov', 'PR Specialist', 958.18, 3, '2024-01-21'),
+    ('Umid Karimova', 'HR Manager', 967.89, 2, '2024-01-24'),
+    ('Zarnigor Valiyev', 'Marketing Manager', 949.62, 3, '2024-01-27'),
+    ('Islom Valiyev', 'Marketing Specialist', 943.61, 3, '2024-01-30'),
+    ('Azizbek Sobirov', 'Recruiter', 906.79, 2, '2024-02-02'),
+    ('Azizbek Mirzayeva', 'HR Specialist', 1173.06, 1, '2024-02-05'),
+    ('Akmal Abdurahmonov', 'HR Manager', 705.42, 1, '2024-02-08'),
+    ('Shohruh Qoziyev', 'HR Manager', 710.61, 2, '2024-02-11'),
+    ('Malika Xolmatov', 'Financial Analyst', 1077.01, 3, '2024-02-14'),
+    ('Akmal Yusupov', 'Software Engineer', 1143.67, 4, '2024-02-17'),
+    ('Adham Abdullaeva', 'Software Engineer', 653.17, 2, '2024-02-20'),
+    ('Shahnoza Sodiqova', 'Recruiter', 703.0, 4, '2024-02-23'),
+    ('Zafar Rahimova', 'Software Engineer', 607.72, 3, '2024-02-26'),
+    ('Lola Ismailova', 'Analyst', 1006.63, 1, '2024-02-29'),
+    ('Malika Karimova', 'PR Specialist', 541.22, 1, '2024-03-03'),
+    ('Jasur Toshpulatov', 'Recruiter', 848.14, 1, '2024-03-06'),
+    ('Malika Usmonova', 'Software Engineer', 848.94, 2, '2024-03-09'),
+    ('Lola Shodmonov', 'Backend Developer', 1111.83, 4, '2024-03-12'),
+    ('Oybek Valiyev', 'Software Engineer', 1044.43, 1, '2024-03-15'),
+    ('Zafar Sobirov', 'Analyst', 1085.7, 2, '2024-03-18'),
+    ('Zarnigor Qodirov', 'HR Manager', 743.77, 3, '2024-03-21'),
+    ('Sevara Rahimova', 'PR Specialist', 622.01, 3, '2024-03-24'),
+    ('Dildora Jalilova', 'HR Specialist', 1139.6, 3, '2024-03-27'),
+    ('Feruza Turgunova', 'Finance Manager', 1155.36, 1, '2024-03-30'),
+    ('Zafar Karimov', 'Marketing Specialist', 864.46, 2, '2024-04-02'),
+    ('Gulbahor Usmonova', 'Backend Developer', 751.69, 1, '2024-04-05'),
+    ('Akmal Usmonova', 'PR Specialist', 545.09, 3, '2024-04-08'),
+    ('Oybek Akhmedova', 'HR Manager', 643.88, 2, '2024-04-11'),
+    ('Shavkat Eshmatova', 'Finance Manager', 870.71, 1, '2024-04-14'),
+    ('Umid Abdurahmonov', 'HR Specialist', 759.84, 2, '2024-04-17'),
+    ('Malika Rakhimov', 'HR Assistant', 578.7, 1, '2024-04-20'),
+    ('Komila Sharipova', 'HR Manager', 1149.54, 2, '2024-04-23'),
+    ('Nigora Yusupov', 'HR Specialist', 573.68, 2, '2024-04-26'),
+    ('Malika Hamidov', 'Backend Developer', 847.85, 3, '2024-04-29'),
+    ('Baxtiyor Turgunova', 'HR Specialist', 537.36, 3, '2024-05-02'),
+    ('Rustam Sobirov', 'Developer', 531.86, 2, '2024-05-05'),
+    ('Malika Valiyev', 'HR Assistant', 771.34, 3, '2024-05-08'),
+    ('Dildora Soliyev', 'Backend Developer', 951.46, 3, '2024-05-11'),
+    ('Baxtiyor Jalilova', 'PR Specialist', 702.92, 3, '2024-05-14'),
+    ('Madina Akhmedova', 'HR Manager', 610.77, 2, '2024-05-17'),
+    ('Javohir Mirzayeva', 'Backend Developer', 850.36, 1, '2024-05-20'),
+    ('Shoxrux Qoziyev', 'Backend Developer', 1016.7, 2, '2024-05-23'),
+    ('Oybek Karimova', 'HR Manager', 1014.27, 3, '2024-05-26'),
+    ('Rustam Ibragimova', 'Marketing Manager', 718.28, 2, '2024-05-29'),
+    ('Maftuna Nurmatova', 'Backend Developer', 978.47, 4, '2024-06-01'),
+    ('Shahnoza Akhmedova', 'Auditor', 899.46, 2, '2024-06-04'),
+    ('Dilafruz Khudoyberdiyev', 'Recruiter', 650.18, 3, '2024-06-07'),
+    ('Shoxrux Sodiqova', 'Finance Manager', 605.34, 4, '2024-06-10'),
+    ('Dilnoza Abdullaeva', 'Financial Analyst', 518.27, 3, '2024-06-13'),
+    ('Umid Xolmatov', 'Financial Analyst', 1016.32, 4, '2024-06-16'),
+    ('Jasur Khudoyberdiyev', 'Backend Developer', 1194.56, 1, '2024-06-19'),
+    ('Zafar Sodiqova', 'HR Specialist', 643.52, 2, '2024-06-22'),
+    ('Sevara Rakhimov', 'HR Manager', 821.63, 3, '2024-06-25'),
+    ('Javlonbek Akhmedova', 'Auditor', 1154.33, 3, '2024-06-28'),
+    ('Ulugbek Hamidov', 'Financial Analyst', 787.86, 2, '2024-07-01'),
+    ('Jasurbek Yusupov', 'Analyst', 1172.98, 4, '2024-07-04'),
+    ('Malika Abdullayev', 'HR Manager', 1036.22, 3, '2024-07-07'),
+    ('Javlonbek Akhmedova', 'HR Specialist', 687.62, 4, '2024-07-10'),
+    ('Akmal Karimov', 'PR Specialist', 686.89, 3, '2024-07-13'),
+    ('Gulbahor Yusupov', 'Software Engineer', 613.58, 3, '2024-07-16'),
+    ('Dilnoza Ibragimova', 'Analyst', 606.9, 4, '2024-07-19'),
+    ('Nigora Sharipova', 'Accountant', 1006.37, 3, '2024-07-22'),
+    ('Javohir Karimova', 'HR Specialist', 759.31, 2, '2024-07-25'),
+    ('Baxtiyor Mirzayeva', 'Developer', 703.58, 1, '2024-07-28'),
+    ('Komila Nurmatova', 'Software Engineer', 789.09, 1, '2024-07-31'),
+    ('Komila Shodmonov', 'HR Manager', 627.16, 2, '2024-08-03'),
+    ('Javohir Rakhimov', 'Auditor', 823.9, 2, '2024-08-06'),
+    ('Sevara Akhmedova', 'Analyst', 1027.94, 1, '2024-08-09'),
+    ('Sevara Nurmatova', 'Financial Analyst', 1193.52, 1, '2024-08-12'),
+    ('Malika Hamidov', 'Finance Manager', 1040.73, 1, '2024-08-15'),
+    ('Shohruh Rahimova', 'Backend Developer', 826.34, 2, '2024-08-18'),
+    ('Malika Sodiqova', 'Auditor', 1002.16, 1, '2024-08-21'),
+    ('Davron Qochqorov', 'Finance Manager', 667.1, 3, '2024-08-24'),
+    ('Rustam Nurmatova', 'Marketing Manager', 906.76, 2, '2024-08-27'),
+    ('Adham Usmonova', 'Recruiter', 1065.23, 4, '2024-08-30'),
+    ('Malika Abdurahmonov', 'Recruiter', 810.78, 4, '2024-09-02'),
+    ('Bekzod Toshpulatov', 'Marketing Specialist', 569.81, 2, '2024-09-05'),
+    ('Azizbek Abdullayev', 'Accountant', 1159.68, 1, '2024-09-08'),
+    ('Ulugbek Sodiqova', 'Marketing Specialist', 572.66, 1, '2024-09-11'),
+    ('Sardor Rustamova', 'Developer', 647.15, 1, '2024-09-14'),
+    ('Madina Sharipova', 'Marketing Manager', 1148.28, 1, '2024-09-17'),
+    ('Dilnoza Abdullaeva', 'Financial Analyst', 911.82, 3, '2024-09-20'),
+    ('Nilufar Abdullaeva', 'Marketing Specialist', 559.49, 1, '2024-09-23'),
+    ('Sevara Sharipova', 'Software Engineer', 1164.36, 4, '2024-09-26'),
+    ('Sevara Qochqorov', 'Financial Analyst', 721.4, 3, '2024-09-29'),
+    ('Shahnoza Sodiqova', 'Auditor', 691.39, 2, '2024-10-02'),
+    ('Nilufar Mirzayeva', 'Analyst', 959.9, 1, '2024-10-05'),
+    ('Zafar Usmonova', 'Analyst', 1121.89, 1, '2024-10-08'),
+    ('Islom Abdurahmonov', 'Backend Developer', 1114.49, 2, '2024-10-11'),
+    ('Bekzod Usmonova', 'HR Assistant', 903.53, 4, '2024-10-14'),
+    ('Sherzod Jalilova', 'Finance Manager', 970.32, 3, '2024-10-17'),
+    ('Maftuna Abdullaeva', 'Developer', 593.61, 2, '2024-10-20'),
+    ('Dilnoza Rakhimov', 'HR Assistant', 980.01, 3, '2024-10-23'),
+    ('Nigora Hamidov', 'Backend Developer', 1040.16, 4, '2024-10-26'),
+    ('Dilafruz Mamatov', 'PR Specialist', 1180.03, 4, '2024-10-29'),
+    ('Dildora Jalilova', 'Recruiter', 973.56, 2, '2024-11-01'),
+    ('Shoxrux Toshpulatov', 'HR Specialist', 679.61, 4, '2024-11-04'),
+    ('Shohruh Usmonova', 'Recruiter', 728.61, 1, '2024-11-07'),
+    ('Azizbek Qoziyev', 'HR Manager', 676.98, 4, '2024-11-10'),
+    ('Azizbek Rasulova', 'HR Specialist', 1099.9, 2, '2024-11-13'),
+    ('Shohruh Abdurahmonov', 'Finance Manager', 848.16, 2, '2024-11-16'),
+    ('Oybek Turgunova', 'PR Specialist', 550.79, 3, '2024-11-19'),
+    ('Dilafruz Khudoyberdiyev', 'Backend Developer', 613.67, 2, '2024-11-22'),
+    ('Zarnigor Karimova', 'HR Specialist', 999.8, 1, '2024-11-25'),
+    ('Shahnoza Rahimova', 'HR Specialist', 944.79, 2, '2024-11-28'),
+    ('Shahnoza Sharipova', 'PR Specialist', 924.91, 2, '2024-12-01'),
+    ('Nilufar Tursunov', 'HR Assistant', 645.67, 1, '2024-12-04'),
+    ('Sardor Yusupov', 'Accountant', 906.26, 2, '2024-12-07'),
+    ('Islom Nurmatova', 'Analyst', 536.23, 1, '2024-12-10'),
+    ('Ali Rahimova', 'PR Specialist', 1176.32, 3, '2024-12-13'),
+    ('Lola Normurodov', 'Marketing Manager', 1079.43, 3, '2024-12-16'),
+    ('Komila Karimova', 'Analyst', 909.53, 2, '2024-12-19'),
+    ('Malika Usmonova', 'Auditor', 805.67, 3, '2024-12-22'),
+    ('Shahnoza Toirova', 'PR Specialist', 942.51, 2, '2024-12-25'),
+    ('Shavkat Toirova', 'Financial Analyst', 787.96, 4, '2024-12-28'),
+    ('Sardor Jalilova', 'Finance Manager', 1169.82, 3, '2024-12-31'),
+    ('Gulbahor Nurmatova', 'PR Specialist', 731.54, 3, '2025-01-03'),
+    ('Olim Nurmatova', 'Accountant', 1178.05, 1, '2025-01-06'),
+    ('Sherzod Ismailova', 'PR Specialist', 661.82, 1, '2025-01-09'),
+    ('Shavkat Soliyev', 'Marketing Manager', 631.14, 1, '2025-01-12'),
+    ('Rustam Abdullayev', 'HR Assistant', 949.39, 2, '2025-01-15'),
+    ('Islom Sharipova', 'Marketing Specialist', 1134.48, 2, '2025-01-18'),
+    ('Dildora Ergashev', 'Recruiter', 1003.58, 4, '2025-01-21'),
+    ('Dildora Sharipova', 'Analyst', 875.82, 3, '2025-01-24'),
+    ('Rustam Sodiqova', 'Software Engineer', 935.26, 3, '2025-01-27'),
+    ('Ulugbek Akhmedova', 'Backend Developer', 920.68, 1, '2025-01-30'),
+    ('Adham Sharipova', 'Software Engineer', 1146.71, 1, '2025-02-02'),
+    ('Sherzod Sharipova', 'HR Assistant', 951.38, 1, '2025-02-05'),
+    ('Nilufar Sodiqova', 'Finance Manager', 582.66, 4, '2025-02-08'),
+    ('Bekzod Toirova', 'Recruiter', 929.89, 1, '2025-02-11'),
+    ('Zafar Toshpulatov', 'PR Specialist', 971.14, 4, '2025-02-14'),
+    ('Gulbahor Karimov', 'HR Specialist', 567.48, 3, '2025-02-17'),
+    ('Jasur Nurmatova', 'HR Assistant', 822.31, 1, '2025-02-20'),
+    ('Sardor Qochqorov', 'Backend Developer', 945.02, 3, '2025-02-23');
+
+select * from employee;
+
+select * from employee order by salary desc offset 1 limit 1;
+
+select * from employee order by salary asc limit 10;
+
+select * from employee fetch first 20 row only ;
+
+SELECT fullname, salary  FROM employee WHERE salary BETWEEN 700 AND 1000;
+
+SELECT * FROM employee ORDER BY id OFFSET 10 ROWS FETCH FIRST 5 ROWS ONLY;
+
+

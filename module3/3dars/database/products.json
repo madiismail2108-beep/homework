@@ -1,0 +1,33 @@
+{
+    "1111" :{
+        "name" : "Iphone13" ,
+        "description" : "ColorMidnightWeight174 gFeaturesaccelerometer, gyroscope, proximity sensor, compass, barometer, Apple Pay (Visa, MasterCard, AMEX certified)OS VersioniOS 15Dimensions146.7 x 71.5 x 7.7 mmFace ID SensorYesWater ResistanceYes, IP68Number and type of SIM cardSingle SIM (Nano-SIM and/or eSIM)",
+        "price" : 5600,
+        "stock" : 0,
+        "discount" : 0,
+        "product_id" : "1111",
+        "characters" :{
+            "level of protection" : "IP64" ,
+            "Operation system" : "iOS 15",
+            "color" : "MidnightWeight174",
+            "Material" : "aluminium and glass"
+        },
+        "created at" : ""
+
+    },
+    "2222":{
+        "name" : "Iphone12" ,
+        "description" : "ColorMidnightWeight17 gFeaturesaccelerometer, gyroscope, proximity sensor, compass, barometer, Apple Pay (Visa, MasterCard, AMEX certified)OS VersioniOS 15Dimensions146.7 x 71.5 x 7.7 mmFace ID SensorYesWater ResistanceYes, IP68Number and type of SIM cardSingle SIM (Nano-SIM and/or eSIM)",
+        "price" : 5600,
+        "stock" : 0,
+        "discount" : 0,
+        "product_id" : "2222",
+        "characters" :{
+            "protection" : "IP63" ,
+            "OS" : "iOS 14",
+            "color" : "MidnightWeight17",
+            "Material" : "aluminium and glass"
+        },
+        "created at" : ""
+    }
+}

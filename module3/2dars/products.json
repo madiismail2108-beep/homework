@@ -1,0 +1,14 @@
+[
+    {
+        "name": "milk",
+        "description": "sweet",
+        "price": 3.44,
+        "created_at": "2025-08-15 11:27:35.402621"
+    },
+    {
+        "name": "apple",
+        "description": "sweet",
+        "price": 2.44,
+        "created_at": "2025-08-15 11:30:03.528319"
+    }
+]
