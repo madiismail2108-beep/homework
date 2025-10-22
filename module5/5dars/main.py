@@ -1,29 +1,63 @@
-from servise import login, register, logout
+from servise import login,register,logout,add_todo
 
-while True:
-    print('Choose one:\n Log in --> 1,\n Register --> 2,\n log out --> 3,\n Exit--> q.')
-    choice = input('choice : ')
-    if choice == '1':
-        username = input('username : ')
-        password = input('password : ')
-        
-        result = login(username,password)
-        
-        print(result)
+def login_page():
+    username = input('Username : ')
+    password = input('Password : ')
+    response = login(username,password)
+    print(response)
 
-    elif choice =="2":
-        username = input('your username: ')
-        password = input('yourpassword: ')
-        full_name = input('your full name: ')
-        result = register(username, password, full_name)
-        print(result)
+def register_page():
+    username = input('Username : ')
+    password = input('Password : ')
+    email = input('Email : ')
+    response = register(username,password)
+    print(response)
 
-    elif choice =="3":
-        result = logout()
-        print(result)
 
-    elif choice == 'q':
-        break
-    else:
-        print('Invalid choice, try again please')
+def logout_page():
+    response = logout()
+    print(response)
 
+def add_todo_page():
+    response = add_todo()
+    print(response)
+
+def menu():
+    print("""
+          Login => 1
+          Register => 2
+          Logout => 3
+          Todo Add => 4
+          Exit => q 
+          """)
+    return input("?:")
+
+def run():
+    while True:
+        choice = menu()
+        if choice == '1':
+            login_page()
+            
+        elif choice == '2':
+            register_page()
+            
+        elif choice == '3':
+            logout_page()
+            
+        elif choice == '4':
+            add_todo_page()
+            
+            
+            
+        elif choice == 'q':
+            break
+            
+        else:
+            print('Invalid choice')
+            continue
+            
+            
+            
+            
+if __name__ == '__main__':
+    run()

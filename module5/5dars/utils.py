@@ -1,7 +1,11 @@
 import bcrypt
+from serializers import UserRegister
+from session import Session
+
+session = Session()
 
 def hash_password(raw_password : str):
-    encoded_password = raw_password.encode('utf-8')
+    encoded_password = raw_password.encode('utf-8') 
     salt = bcrypt.gensalt()
     return bcrypt.hashpw(encoded_password,salt).decode()
 
@@ -16,3 +20,31 @@ class Response:
         
     def __str__(self):
         return f'{self.message} =  {self.status_code}'
+    
+    
+    
+def validate_user(dto : UserRegister):
+    assert dto.username , 'Username must be required'
+    assert dto.password , 'Password must be required'
+    
+    
+    
+    
+def login_required(func):
+    def wrapper(*args,**kwargs):
+        if not session.session:
+            return Response('Login required',404)
+        
+        return func(*args,**kwargs)
+    
+    return wrapper
+
+def is_admin(func):
+    def wrapper(*args,**kwargs):
+        if session.session.role != 'admin':
+            return Response('Only admin user can be changed')
+        
+        return func(*args,**kwargs)
+    return wrapper
+
+

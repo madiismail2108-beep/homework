@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from utils import hash_password
 from models import UserRole
 
-load_dotenv()
+load_dotenv() 
 
 db_info = {
     "database":os.getenv("n70"),
@@ -47,16 +47,16 @@ def create_todo_table():
         );    
     """
     cur.execute(todo_query)
-
+    
 @commit
 def init():
     create_user_table()
     create_todo_table()
-    
+
 @commit
 def insert_admin():
     insert_admin_query = '''insert into users(username,password,role)
     values(%s,%s,%s);
     '''
-    data = ('admin',hash_password('admin123').UserRole.ADMIN.value)
+    data = ('admin',hash_password('admin123'),UserRole.ADMIN.value)
     cur.execute(insert_admin_query,data)
