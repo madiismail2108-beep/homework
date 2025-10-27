@@ -27,3 +27,22 @@ except:
 
 '''------------5task-----------'''
 
+#----------------lab4-----------------
+
+'''--------------1task------------
+
+a=int(input('enter number: '))
+b=int(input('enter number: '))
+
+def calculations(a, b):
+ c= a*b
+ d=a/b
+ print(c, d)
+
+
+if __name__=='__main__':
+    calculations(a,b)
+    '''
+
+
+'''--------------2task------------'''
