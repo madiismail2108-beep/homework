@@ -3,6 +3,7 @@ from utils import Response, match_password,validate_user, hash_password,login_re
 from db import cur, commit
 from models import User, UserRole
 from serializers import UserRegister
+from log import logging
 import logging
 
 session = Session()
@@ -54,12 +55,7 @@ def logout():
     
     return Response('You must be login.',404)
 
-logging.basicConfig(
-    filename='logs/service.log',
-    level=logging.INFO,
-    format='%(asctimate)s - %(levelname)s - %(message)s'
 
-)
 
 @commit
 @login_required
