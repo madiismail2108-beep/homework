@@ -3,6 +3,7 @@ from utils import Response, match_password,validate_user, hash_password,login_re
 from db import cur, commit
 from models import User, UserRole
 from serializers import UserRegister
+import logging
 
 session = Session()
 
@@ -53,14 +54,26 @@ def logout():
     
     return Response('You must be login.',404)
 
+logging.basicConfig(
+    filename='logs/service.log',
+    level=logging.INFO,
+    format='%(asctimate)s - %(levelname)s - %(message)s'
+
+)
+
 @commit
 @login_required
 @is_admin
 def add_todo(title: str, description: str):
     insert_todo_query='''insert into todos 
-    (title, description) values(%s, %s);'''
+    (title, description) 
+    values(%s, %s);'''
+
     user = session.check_session()
     data = (title, description, user.id)
     cur.execute(insert_todo_query, data)
+    commit()
+
+    logging.info(f'user {user.username} added a new todo: {title}')
     return Response('Todo successfully added', 201)
     
