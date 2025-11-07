@@ -1,0 +1,28 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+
+{% block title %}{{ product.name }} — My Shop{% endblock %}
+
+
+{% block content %}
+<div class="product-detail">
+<div class="thumb">
+{% if product.image %}
+<img src="{{ product.image.url }}" alt="{{ product.name }}">
+{% else %}
+<div class="no-image">No image</div>
+{% endif %}
+</div>
+<div class="info">
+<h1>{{ product.name }}</h1>
+<p class="price">{{ product.price }} USD</p>
+<div class="description">{{ product.description|linebreaks }}</div>
+<form method="post" action="#">
+{% csrf_token %}
+<label>Quantity <input type="number" name="qty" value="1" min="1"></label>
+<button type="submit" class="btn">Add to cart</button>
+</form>
+</div>
+</div>
+{% endblock %}
